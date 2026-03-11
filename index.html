@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>crgstar</title>
+  <meta name="description" content="crgstar - App development studio based in Japan">
+  <style>
+    :root {
+      --bg: #ffffff;
+      --text: #1d1d1f;
+      --text-secondary: #6e6e73;
+      --border: #e5e5e7;
+      --accent: #0071e3;
+      --card-bg: #f5f5f7;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #000000;
+        --text: #f5f5f7;
+        --text-secondary: #a1a1a6;
+        --border: #2d2d2d;
+        --accent: #2997ff;
+        --card-bg: #1d1d1f;
+      }
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    header {
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .logo {
+      font-size: 1.4rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .lang-switch {
+      font-size: 0.85rem;
+      color: var(--accent);
+      cursor: pointer;
+      background: none;
+      border: none;
+      font-family: inherit;
+    }
+
+    .lang-switch:hover {
+      text-decoration: underline;
+    }
+
+    main {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 80px 24px;
+    }
+
+    .hero {
+      text-align: center;
+      margin-bottom: 80px;
+    }
+
+    .hero h1 {
+      font-size: 2.8rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      margin-bottom: 16px;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      color: var(--text-secondary);
+    }
+
+    .app-card {
+      background: var(--card-bg);
+      border-radius: 20px;
+      padding: 40px;
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      margin-bottom: 24px;
+    }
+
+    .app-card:last-of-type {
+      margin-bottom: 80px;
+    }
+
+    .app-icon {
+      width: 100px;
+      height: 100px;
+      border-radius: 22px;
+      flex-shrink: 0;
+    }
+
+    .app-info h2 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .app-info p {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      margin-bottom: 12px;
+    }
+
+    .badge {
+      display: inline-block;
+      background: var(--accent);
+      color: #fff;
+      padding: 8px 20px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+
+    .badge:hover {
+      opacity: 0.85;
+    }
+
+    .about {
+      margin-bottom: 80px;
+    }
+
+    .about h2 {
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+
+    .about p {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 24px 40px;
+      text-align: center;
+      color: var(--text-secondary);
+      font-size: 0.8rem;
+    }
+
+    footer a {
+      color: var(--text-secondary);
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 600px) {
+      header {
+        padding: 16px 20px;
+      }
+
+      main {
+        padding: 48px 20px;
+      }
+
+      .hero h1 {
+        font-size: 2rem;
+      }
+
+      .app-card {
+        flex-direction: column;
+        text-align: center;
+        padding: 32px 24px;
+      }
+
+      footer {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">crgstar</div>
+    <button class="lang-switch" onclick="toggleLang()">日本語</button>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h1 data-en="Crafting Apps" data-ja="アプリを創る">Crafting Apps</h1>
+      <p data-en="An independent app studio based in Japan." data-ja="日本を拠点とするアプリ開発スタジオ。">An independent app studio based in Japan.</p>
+    </section>
+
+    <section class="app-card">
+      <img src="gymlogue-icon.png" alt="Gymlogue" class="app-icon">
+      <div class="app-info">
+        <h2>Gymlogue</h2>
+        <p data-en="A simple and intuitive workout logging app. Track your exercises, sets, and reps with ease." data-ja="シンプルで直感的な筋トレ記録アプリ。種目・セット・回数を簡単に記録。">A simple and intuitive workout logging app. Track your exercises, sets, and reps with ease.</p>
+        <a href="#" class="badge" data-en="Coming Soon on the App Store" data-ja="App Store で近日公開">Coming Soon on the App Store</a>
+      </div>
+    </section>
+
+    <section class="app-card">
+      <img src="kumorb-icon.png" alt="Kumorb" class="app-icon">
+      <div class="app-info">
+        <h2>Kumorb</h2>
+        <p data-en="A graph-focused weather app. Visualize forecasts with beautiful, intuitive charts." data-ja="グラフを軸にした天気アプリ。美しく直感的なチャートで天気予報を可視化。">A graph-focused weather app. Visualize forecasts with beautiful, intuitive charts.</p>
+        <a href="#" class="badge" data-en="Coming Soon on the App Store" data-ja="App Store で近日公開">Coming Soon on the App Store</a>
+      </div>
+    </section>
+
+    <section class="about">
+      <h2 data-en="About" data-ja="概要">About</h2>
+      <p data-en="crgstar is an independent app development studio focused on creating useful, well-crafted iOS applications." data-ja="crgstar は、使いやすく丁寧に作られた iOS アプリケーションの開発に注力する個人アプリ開発スタジオです。">crgstar is an independent app development studio focused on creating useful, well-crafted iOS applications.</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>
+      <a href="mailto:crgstar.toiawase@gmail.com">Contact</a>
+      &nbsp;&middot;&nbsp;
+      &copy; 2026 crgstar
+    </p>
+  </footer>
+
+  <script>
+    let lang = 'en';
+
+    function toggleLang() {
+      lang = lang === 'en' ? 'ja' : 'en';
+      document.querySelectorAll('[data-en]').forEach(el => {
+        el.textContent = el.getAttribute('data-' + lang);
+      });
+      document.querySelector('.lang-switch').textContent = lang === 'en' ? '日本語' : 'English';
+      document.documentElement.lang = lang;
+    }
+  </script>
+</body>
+</html>
