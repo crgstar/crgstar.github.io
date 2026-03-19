@@ -76,6 +76,24 @@
       color: var(--secondary);
     }
 
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      align-items: center;
+    }
+
+    .nav-links a {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+
     .lang-switch {
       font-size: 0.82rem;
       font-weight: 600;
@@ -120,6 +138,30 @@
       font-size: 0.8rem;
       color: var(--text-secondary);
       font-weight: 500;
+    }
+
+    /* About Section */
+    .about-section {
+      padding: 56px 0 0;
+    }
+
+    .about-body {
+      padding: 32px;
+      background: var(--section-bg);
+      border-radius: 16px;
+      border: 1px solid var(--border);
+    }
+
+    .about-body p {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+
+    .about-body .about-meta {
+      margin-top: 8px;
+      font-size: 0.82rem;
+      color: var(--text-secondary);
     }
 
     /* Apps Section */
@@ -187,6 +229,19 @@
     .badge:hover {
       background: var(--primary);
       color: #fff;
+    }
+
+    .privacy-link {
+      display: block;
+      font-size: 0.75rem;
+      color: var(--text-secondary);
+      text-decoration: none;
+      margin-top: 8px;
+      transition: color 0.3s;
+    }
+
+    .privacy-link:hover {
+      color: var(--primary);
     }
 
     /* Contact CTA */
@@ -272,17 +327,28 @@
       color: var(--primary);
     }
 
+    .footer-right {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+    }
+
     /* Animations */
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
-    .apps-section { animation: fadeUp 0.8s ease both; }
-    .contact-cta { animation: fadeUp 0.8s ease 0.15s both; }
+    .about-section { animation: fadeUp 0.8s ease both; }
+    .apps-section { animation: fadeUp 0.8s ease 0.1s both; }
+    .contact-cta { animation: fadeUp 0.8s ease 0.2s both; }
 
     /* Responsive */
     @media (max-width: 640px) {
+      .nav-links {
+        display: none;
+      }
+
       header {
         padding: 18px 20px;
       }
@@ -316,11 +382,26 @@
   <div class="wrapper">
     <header>
       <div class="logo">crgstar</div>
+      <nav class="nav-links">
+        <a href="#about" data-en="About" data-ja="会社概要">About</a>
+        <a href="#apps" data-en="Apps" data-ja="アプリ">Apps</a>
+        <a href="#contact" data-en="Contact" data-ja="お問い合わせ">Contact</a>
+      </nav>
       <button class="lang-switch" onclick="toggleLang()" aria-label="Switch language">日本語</button>
     </header>
 
     <main>
-      <section class="apps-section">
+      <section class="about-section" id="about">
+        <div class="section-header">
+          <h2 class="section-title" data-en="About" data-ja="会社概要">About</h2>
+        </div>
+        <div class="about-body">
+          <p data-en="App development studio, Kanagawa, Japan." data-ja="神奈川県を拠点とするアプリ開発スタジオです。">App development studio, Kanagawa, Japan.</p>
+          <p class="about-meta">Est. 2025</p>
+        </div>
+      </section>
+
+      <section class="apps-section" id="apps">
         <div class="section-header">
           <h2 class="section-title" data-en="Apps" data-ja="アプリ">Apps</h2>
           <span class="section-count">(2)</span>
@@ -333,6 +414,7 @@
               <h3>Kumorb</h3>
               <p data-en="A graph-focused weather app. Visualize forecasts with beautiful, intuitive charts." data-ja="グラフを軸にした天気アプリ。美しく直感的なチャートで天気予報を可視化。">A graph-focused weather app. Visualize forecasts with beautiful, intuitive charts.</p>
               <a href="https://apps.apple.com/app/kumorb/id6757797196" class="badge" data-en="App Store" data-ja="App Store">App Store</a>
+              <a href="https://crgstar.github.io/kumorb-docs/en/" class="privacy-link" data-en="Privacy Policy" data-ja="プライバシーポリシー">Privacy Policy</a>
             </div>
           </div>
 
@@ -342,13 +424,14 @@
               <h3>Gymlogue</h3>
               <p data-en="A simple and intuitive workout logging app. Track your exercises, sets, and reps with ease." data-ja="シンプルで直感的な筋トレ記録アプリ。種目・セット・回数を簡単に記録。">A simple and intuitive workout logging app. Track your exercises, sets, and reps with ease.</p>
               <span class="badge" data-en="Coming Soon" data-ja="近日公開">Coming Soon</span>
+              <a href="https://gymlogue.crgstar.com/privacy.html" class="privacy-link" data-en="Privacy Policy" data-ja="プライバシーポリシー">Privacy Policy</a>
             </div>
           </div>
 
         </div>
       </section>
 
-      <section class="contact-cta">
+      <section class="contact-cta" id="contact">
         <h3 data-en="Get in touch" data-ja="お問い合わせ">Get in touch</h3>
         <p data-en="Questions, feedback, or just want to say hello." data-ja="ご質問、フィードバック、またはお気軽にどうぞ。">Questions, feedback, or just want to say hello.</p>
         <a href="mailto:crgstar.toiawase@gmail.com" class="contact-btn" data-en="Contact" data-ja="メールを送る">Contact</a>
@@ -358,9 +441,12 @@
     <footer>
       <div class="footer-left">
         <span class="footer-brand">crgstar</span>
-        <span class="footer-tagline" data-en="Building software in Japan." data-ja="Building software in Japan.">Building software in Japan.</span>
+        <span class="footer-tagline" data-en="App development studio, Kanagawa, Japan." data-ja="神奈川県, 日本">App development studio, Kanagawa, Japan.</span>
       </div>
-      <span>&copy; 2026 crgstar</span>
+      <div class="footer-right">
+        <a href="terms.html" data-en="Terms of Service" data-ja="利用規約">Terms of Service</a>
+        <span>&copy; 2026 crgstar</span>
+      </div>
     </footer>
   </div>
 

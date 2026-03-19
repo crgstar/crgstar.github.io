@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Terms of Service — crgstar</title>
+  <meta name="description" content="Terms of Service for crgstar apps and services.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #84A98C;
+      --primary-soft: rgba(132, 169, 140, 0.10);
+      --secondary: #445964;
+      --bg: #fcfcfc;
+      --text: #1a2e1a;
+      --text-secondary: rgba(68, 89, 100, 0.60);
+      --border: #e2e8ec;
+      --section-bg: rgba(68, 89, 100, 0.04);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --primary: #a3c4ab;
+        --secondary: #c0cdd4;
+        --bg: #161c18;
+        --text: #e8ece9;
+        --text-secondary: rgba(192, 205, 212, 0.55);
+        --border: #2a332c;
+        --section-bg: rgba(163, 196, 171, 0.04);
+      }
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    header {
+      width: 100%;
+      max-width: 800px;
+      padding: 24px 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .logo {
+      font-size: 1.1rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: var(--secondary);
+      text-decoration: none;
+    }
+
+    .lang-switch {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--primary);
+      cursor: pointer;
+      background: none;
+      border: 1px solid var(--border);
+      font-family: inherit;
+      padding: 6px 16px;
+      border-radius: 10px;
+      transition: all 0.3s ease;
+    }
+
+    .lang-switch:hover {
+      background: var(--primary);
+      color: #fff;
+      border-color: var(--primary);
+    }
+
+    main {
+      width: 100%;
+      max-width: 800px;
+      padding: 56px 32px;
+    }
+
+    .terms-content h1 {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--secondary);
+      margin-bottom: 8px;
+    }
+
+    .terms-content .updated {
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+      margin-bottom: 40px;
+    }
+
+    .terms-content h2 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--secondary);
+      margin: 32px 0 8px;
+    }
+
+    .terms-content p {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      line-height: 1.8;
+    }
+
+    footer {
+      width: 100%;
+      max-width: 800px;
+      border-top: 1px solid var(--border);
+      padding: 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: var(--text-secondary);
+      font-size: 0.78rem;
+    }
+
+    footer a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    footer a:hover { color: var(--primary); }
+
+    @media (max-width: 640px) {
+      header { padding: 18px 20px; }
+      main { padding: 40px 20px; }
+      footer { padding: 24px 20px; flex-direction: column; gap: 12px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <header>
+      <a href="/" class="logo">crgstar</a>
+      <button class="lang-switch" onclick="toggleLang()" aria-label="Switch language">日本語</button>
+    </header>
+
+    <main>
+      <div class="terms-content">
+        <h1 data-en="Terms of Service" data-ja="利用規約">Terms of Service</h1>
+        <p class="updated" data-en="Last updated: March 2026" data-ja="最終更新: 2026年3月">Last updated: March 2026</p>
+
+        <h2 data-en="1. Use of Services" data-ja="1. サービスの利用">1. Use of Services</h2>
+        <p data-en="By using crgstar apps, you agree to these terms. Our apps are provided as-is for personal, non-commercial use." data-ja="crgstar のアプリを利用することで、本規約に同意したものとみなします。アプリは個人・非商用目的での利用を目的として提供されます。">By using crgstar apps, you agree to these terms. Our apps are provided as-is for personal, non-commercial use.</p>
+
+        <h2 data-en="2. Intellectual Property" data-ja="2. 知的財産">2. Intellectual Property</h2>
+        <p data-en="All content, design, and code within crgstar apps are the property of crgstar. You may not reproduce or distribute any part without written permission." data-ja="crgstar のアプリに含まれるコンテンツ・デザイン・コードはすべて crgstar の財産です。書面による許可なく複製・配布することはできません。">All content, design, and code within crgstar apps are the property of crgstar. You may not reproduce or distribute any part without written permission.</p>
+
+        <h2 data-en="3. Disclaimer" data-ja="3. 免責事項">3. Disclaimer</h2>
+        <p data-en="crgstar apps are provided without warranty of any kind. We are not liable for any damages arising from the use of our apps." data-ja="crgstar のアプリはいかなる保証もなく提供されます。アプリの利用により生じた損害について、当社は責任を負いません。">crgstar apps are provided without warranty of any kind. We are not liable for any damages arising from the use of our apps.</p>
+
+        <h2 data-en="4. Contact" data-ja="4. お問い合わせ">4. Contact</h2>
+        <p data-en="For questions about these terms, contact us at: crgstar.toiawase@gmail.com" data-ja="本規約に関するお問い合わせは crgstar.toiawase@gmail.com までご連絡ください。">For questions about these terms, contact us at: crgstar.toiawase@gmail.com</p>
+      </div>
+    </main>
+
+    <footer>
+      <a href="/" data-en="← Back to crgstar" data-ja="← crgstar に戻る">← Back to crgstar</a>
+      <span>&copy; 2026 crgstar</span>
+    </footer>
+  </div>
+
+  <script>
+    let lang = 'en';
+    function toggleLang() {
+      lang = lang === 'en' ? 'ja' : 'en';
+      document.querySelectorAll('[data-en]').forEach(el => {
+        el.textContent = el.getAttribute('data-' + lang);
+      });
+      document.querySelector('.lang-switch').textContent = lang === 'en' ? '日本語' : 'English';
+      document.documentElement.lang = lang;
+    }
+  </script>
+</body>
+</html>
