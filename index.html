@@ -9,6 +9,12 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <script>
+    (function() {
+      const saved = localStorage.getItem('theme');
+      if (saved) document.documentElement.dataset.theme = saved;
+    })();
+  </script>
   <style>
     :root {
       --primary: #84A98C;
@@ -24,7 +30,7 @@
     }
 
     @media (prefers-color-scheme: dark) {
-      :root {
+      :root:not([data-theme="light"]) {
         --primary: #a3c4ab;
         --primary-soft: rgba(163, 196, 171, 0.10);
         --secondary: #c0cdd4;
@@ -36,6 +42,19 @@
         --card-hover-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
         --section-bg: rgba(163, 196, 171, 0.04);
       }
+    }
+
+    :root[data-theme="dark"] {
+      --primary: #a3c4ab;
+      --primary-soft: rgba(163, 196, 171, 0.10);
+      --secondary: #c0cdd4;
+      --bg: #161c18;
+      --text: #e8ece9;
+      --text-secondary: rgba(192, 205, 212, 0.55);
+      --border: #2a332c;
+      --card-bg: #1e2620;
+      --card-hover-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
+      --section-bg: rgba(163, 196, 171, 0.04);
     }
 
     * {
@@ -50,6 +69,7 @@
       color: var(--text);
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
+      transition: background-color 0.3s ease, color 0.3s ease;
     }
 
     .wrapper {
@@ -112,6 +132,32 @@
       background: var(--primary);
       color: #fff;
       border-color: var(--primary);
+    }
+
+    .theme-toggle {
+      background: none;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 6px 10px;
+      cursor: pointer;
+      color: var(--text-secondary);
+      font-family: inherit;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+
+    .theme-toggle:hover {
+      background: var(--primary);
+      color: #fff;
+      border-color: var(--primary);
+    }
+
+    .theme-toggle svg {
+      width: 16px;
+      height: 16px;
+      display: block;
     }
 
     /* Main */
@@ -411,7 +457,10 @@
         <a href="#apps" data-en="Apps" data-ja="アプリ">Apps</a>
         <a href="#contact" data-en="Contact" data-ja="お問い合わせ">Contact</a>
       </nav>
-      <button class="lang-switch" onclick="toggleLang()" aria-label="Switch language">日本語</button>
+      <div style="display:flex;gap:8px;align-items:center;">
+        <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" aria-label="Toggle dark mode"></button>
+        <button class="lang-switch" onclick="toggleLang()" aria-label="Switch language">日本語</button>
+      </div>
     </header>
 
     <main>
@@ -486,6 +535,32 @@
       document.querySelector('.lang-switch').textContent = lang === 'en' ? '日本語' : 'English';
       document.documentElement.lang = lang;
     }
+
+    const ICONS = {
+      sun: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>',
+      moon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>',
+    };
+
+    function isDarkMode() {
+      const saved = document.documentElement.dataset.theme;
+      if (saved === 'dark') return true;
+      if (saved === 'light') return false;
+      return window.matchMedia('(prefers-color-scheme: dark)').matches;
+    }
+
+    function updateThemeIcon() {
+      document.getElementById('themeToggle').innerHTML = isDarkMode() ? ICONS.sun : ICONS.moon;
+    }
+
+    function toggleTheme() {
+      const next = isDarkMode() ? 'light' : 'dark';
+      document.documentElement.dataset.theme = next;
+      localStorage.setItem('theme', next);
+      updateThemeIcon();
+    }
+
+    updateThemeIcon();
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', updateThemeIcon);
   </script>
 </body>
 </html>
